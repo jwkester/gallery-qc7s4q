@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 
 import pillow_heif
@@ -13,7 +15,6 @@ SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".heic"}
 def resize_image(path):
     try:
         with Image.open(path) as img:
-            img_format = img.format
             original_ext = os.path.splitext(path)[1].lower()
             width, height = img.size
 
@@ -29,7 +30,7 @@ def resize_image(path):
                 new_height = MAX_DIMENSION
                 new_width = int((MAX_DIMENSION / height) * width)
 
-            resized = img.resize((new_width, new_height), Image.LANCZOS)
+            resized = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
             if original_ext == ".heic":
                 new_path = os.path.splitext(path)[0] + ".jpg"
                 resized = resized.convert("RGB")
