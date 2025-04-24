@@ -1,18 +1,12 @@
 #!/usr/bin/env -S uv run --script
 
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "requests",
-# ]
-# ///
-
 import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 ALBUMS_DIR = ROOT / "albums"
 STYLE_LINK = "style.css"
+
 
 def generate_album_index(album_path, rel_path):
     photos = [f for f in os.listdir(album_path) if f.lower().endswith(('.jpg', '.jpeg', '.png', '.webp', '.gif'))]
