@@ -22,6 +22,7 @@ def generate_album_index(album_path, rel_path):
 <body>
   <h1>{album_path.name.replace('-', ' ').title()}</h1>
   <a href="../../index.html">← Back to Albums</a>
+  <p>Click any image to view a larger version.</p>
   <div class="gallery">
 """
 
